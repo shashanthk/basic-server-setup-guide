@@ -12,7 +12,7 @@
 
 3. Now the installer asks for the MySQL server version (by default 8.0 will be selected), just hit OK there
 
-4. The installer adds latest version MySQL apt to the Ubuntu package repository. Now, we need to update the repositories in order to install the latest version of MySQL.
+4. The installer adds the latest version MySQL apt to the Ubuntu package repository. Now, we need to update the repositories in order to install the latest version of MySQL.
 
 		sudo update
 		sudo upgrade
@@ -23,9 +23,9 @@
 
 6. The installation wizard starts the installation process of the database server. In between the installation, it'll ask for the `root` user password. Enter the new password and re-confirm the password again. 
 
-	And also, it'll ask for the configuration of password validator plugin. Select **Use Strong Password Encryption (Recommended)** and hit OK button there.
+	And also, it'll ask for the configuration of the password validator plugin. Select **Use Strong Password Encryption (Recommended)** and hit the OK button there.
 
-7. Once we complete installation of MySQL server, it's time to secure the installation. Issue the following command.
+7. Once we complete the installation of the MySQL server, it's time to secure the installation. Issue the following command.
 	
 		sudo mysql_secure_installation
 
@@ -51,9 +51,9 @@
 
 #### Configuring
 
-By default MySQL creates one user that is `root` and you can't login to MySQL console/database without logging as `root` into the Ubuntu server. It's a security feature to restrict anyone from  accessing the database from outside. And also you won't be able to login remotely via graphical user interface tools like MySQL Workbench, SQLyog, etc. Offcourse we can turn on remote login but it's highly discouraged to do so. 
+By default MySQL creates one user that is `root` and you can't log in to MySQL console/database without logging as `root` into the Ubuntu server. It's a security feature to restrict anyone from accessing the database from outside. And also you won't be able to log in remotely via graphical user interface tools like MySQL Workbench, SQLyog, etc. Of course, we can turn on remote login but it's highly discouraged to do so. 
 
-We'll create database user, grant some permissions, create one database and assign this database to the newly created user. This way we can prevent the users from accessing other databases and performing admin (root) level jobs.
+We'll create a database user, grant some permissions, create one database, and assign this database to the newly created user. This way we can prevent the users from accessing other databases and performing admin (root) level jobs.
 
 1. Login into the system's root user account.
 
@@ -67,29 +67,29 @@ We'll create database user, grant some permissions, create one database and assi
 
 		CREATE DATABASE `my_blog` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
-	Above command creates a new database with the name `my_blog` with the charcter set `utf8mb4` and collation `utf8mb4_unicode_ci`.
+	The above command creates a new database with the name `my_blog` with the character set `utf8mb4` and collation `utf8mb4_unicode_ci`.
 
-4. Creating new user.
+4. Creating new users.
 
 		CREATE USER 'john'@'localhost' IDENTIFIED BY 'password@123';
 
-	Above command creates an user with the name `john` and password as `password@123`
+	Above command creates a user with the name `john` and password as `password@123`
 
-5. Granting permissions and database access to newly created user.
+5. Granting permissions and database access to a newly created user.
 	
 		GRANT ALL PRIVILEGES ON *.* TO 'john'@'localhost';
 
 	Here the `*.*` (asterisk period asterisk) denotes all databases and their tables. That means the command grants all permission and all databases access to user `john` 
 
-	We can limit this permission to one database. For example if we want to limit the user `john`'s access to only `my_blog` database, then we can do it like below.
+	We can limit this permission to one database. For example, if we want to limit the user `john`'s access to only `my_blog` database, then we can do it like below.
 	
 		GRANT ALL PRIVILEGES ON my_blog.* TO 'john'@'localhost';
 
-6. Now, we need to reload the settings in MySQL. Otherwise the newly created user won't be able to login and access the database(s). In order to reload the database issue the following command.
+6. Now, we need to reload the settings in MySQL. Otherwise, the newly created user won't be able to log in and access the database(s). In order to reload the database issue the following command.
 	
 		FLUSH PRIVILEGES;
 
-7. In future somehow if you want to revoke granted permissions and database access, you can do it like below.
+7. In the future somehow if you want to revoke granted permissions and database access, you can do it like below.
 
 		REVOKE ALL PRIVILEGES ON my_blog.* FROM 'john'@'localhost';
 
@@ -97,11 +97,11 @@ We'll create database user, grant some permissions, create one database and assi
 
 		SHOW GRANTS FOR john;
 
-9. To drop an user 
+9. To drop a user 
 
 		DROP USER 'john'@'localhost'; 
 
-10. To login to other user 
+10. To login to another user 
 	
 		mysql -u john -p   ### hit Enter and enter the password
 
@@ -116,12 +116,12 @@ We'll create database user, grant some permissions, create one database and assi
 
 		/etc/init.d/mysql stop
 
-2. Login to MySQL in safe-mode. We need Ubuntu server's root password for this.
+2. Login to MySQL in safe-mode. We need the Ubuntu server's root password for this.
 
 		sudo mysqld_safe --skip-grant-tables &
 3. Now, it starts in safe-mode and issue the following command.
 		
-		mysql -u root mysql   ### hit Enter and enter system root password when prompted
+		mysql -u root mysql   ### hit Enter and enter the system root password when prompted
 
 4. And change the password
 
