@@ -81,7 +81,7 @@
 	    </VirtualHost>
 	 
 
-	Hit `Ctrl + 0` to save the file. Use `Ctrl  + X` to exit.
+	Hit `Ctrl + O` to save the file. Use `Ctrl  + X` to exit.
 
 11. Enable the newly added virtual host file.
 
