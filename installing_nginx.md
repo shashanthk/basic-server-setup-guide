@@ -28,7 +28,7 @@
 
 ### Secutiry related configs
 
-1. Disable the Nginx verison being dislayed on all the error pages.
+1. Disable the Nginx version being displayed on all the error pages.
 
         sudo nano /etc/nginx/nginx.conf
 
