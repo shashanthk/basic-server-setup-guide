@@ -7,3 +7,7 @@ Here's the procedure to set up a Ubuntu server and install required software lik
 1. [Installing Apache2](installing_apache2.md)
 
 2. [Installing MySQL](installing_mysql8.md)
+
+3. [Installing Nginx](installing_nginx.md)
+
+4. [Installing PHP and setting up Laravel with Nginx](installing_php_laravel.md)
