@@ -1,6 +1,6 @@
 Here's the procedure to set up a Ubuntu server and install required software like Apache2, MySQL, etc.
 
->**Note**: The steps I mentioned here are tested with the Ubuntu server 18.04 on **Virtual Box**. So, be careful and verify it if you're following these procedures on live servers.
+>**Note**: The steps I mentioned here are tested with the Ubuntu server on **Virtual Box**. So, be careful and verify it if you're following these procedures on live servers.
 
 #### Contents
 
@@ -11,3 +11,5 @@ Here's the procedure to set up a Ubuntu server and install required software lik
 3. [Installing Nginx](installing_nginx.md)
 
 4. [Installing PHP and setting up Laravel with Nginx](installing_php_laravel.md)
+
+5. [Setting up UFW (Uncomplicated Firewall)](setting_up_ufw.md)
