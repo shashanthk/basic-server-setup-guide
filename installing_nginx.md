@@ -2,8 +2,8 @@
 
 1. Update the software repositories first.
 	
-		sudo update
-		sudo upgrade
+		sudo apt update
+		sudo apt upgrade
 
 2. Install Nginx
 	
