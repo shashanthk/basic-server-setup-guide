@@ -13,3 +13,5 @@ Here's the procedure to set up a Ubuntu server and install required software lik
 4. [Installing PHP and setting up Laravel with Nginx](installing_php_laravel.md)
 
 5. [Setting up UFW (Uncomplicated Firewall)](setting_up_ufw.md)
+
+6. [Installing NodeJS](installing_nodejs.md)
