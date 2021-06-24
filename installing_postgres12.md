@@ -16,9 +16,11 @@
 4. Accessing Postgres prompt/command line after switching to `postgres` account
 
         ## open psql shell
+
         psql
 
         ## connecting to a database
+
         \connect <database_name>
 
    Or
@@ -32,12 +34,15 @@
 6. Create new user/role
 
         ## create user with password
+
         CREATE USER <user_name> WITH ENCRYPTED PASSWORD 'strongpasswordhere..'
 
         ## create user without password
+
         CREATE USER <user_name>
 
         ## set password later
+
         \password <user_name>
 
    **Note:** To login with `ident` based authentication, we need to create a new user which matches with exact name as in Postgres database.
@@ -47,43 +52,55 @@
 7. If you want to make newly created user as a super user or revert back to normal user type, run below commands
 
         ## to make as a super user
+
         ALTER USER <user_name> WITH SUPERUSER
 
         ## to revert back the user type as normal
+
         ALTER USER <user_name> WITH NOSUPERUSER
 
 8. Grant permissions for accessing the database to newly created user.
 
         ## grant connection
+
         GRANT CONNECT ON DATABASE <database_name> TO <user_name>
 
         ## grant required operations to perform
+
         GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA <schema_name> TO <user_name>
 
         ## grant all privileges on all tables in the schema
+
         GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA <schema_name> TO <user_name>
 
         ## grant all privileges on all sequences in the schema
+
         GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA <schema_name> TO <user_name>
 
         ## granting all the pivileges in one shot
+
         GRANT ALL PRIVILEGES ON DATABASE <database_name> TO <user_name>
 
         ## to apply these settings to newly created/upcoming tables
+
         ALTER DEFAULT PRIVILEGES FOR USER <user_name> IN SCHEMA <schema_name> GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO <user_name>
 
 9. Taking backups
 
         ## backup with tables and records
+
         pg_dump -U <user_name> <database_name> > backupfile.sql --no-owner
 
         ## backup with drop table, sequence and create commands
+
         pg_dump -U <user_name> <database_name> > backupfile.sql --no-owner --clean
 
         ## backup with only structure and sequence reset
+
         pg_dump -U <user_name> <database_name> > backupfile.sql --no-owner --schema-only
 
         ## exclude one or more table data and maintain structure as it is
+        
         pg_dump -U <user_name> <database_name> > backupfile.sql --no-owner --exclude-table=<table_name>
 
 10. Restoring the database.
