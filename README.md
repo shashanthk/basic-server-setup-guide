@@ -15,3 +15,5 @@ Here's the procedure to set up a Ubuntu server and install required software lik
 5. [Setting up UFW (Uncomplicated Firewall)](setting_up_ufw.md)
 
 6. [Installing NodeJS](installing_nodejs.md)
+
+7. [Installing and setting up PostgreSQL](installing_postgres12.md)
