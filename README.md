@@ -17,3 +17,5 @@ Here's the procedure to set up a Ubuntu server and install required software lik
 6. [Installing NodeJS](installing_nodejs.md)
 
 7. [Installing and setting up PostgreSQL](installing_postgres12.md)
+
+8. [Creating GitHub and Bitbucket SSH keys](creating_git_ssh_key.md)
