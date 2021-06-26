@@ -24,6 +24,8 @@
         sudo chown -R www-data:www-data storage
         sudo chown -R www-data:www-data bootstrap/cache
 
+        sudo chmod -R 775 storage
+
 6. Add an Nginx configuration file to point your project to a domain.
 
         sudo nano /etc/nginx/sites-available/yourdomain.com
