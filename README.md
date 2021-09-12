@@ -19,3 +19,5 @@ Here's the procedure to set up a Ubuntu server and install required software lik
 7. [Installing and setting up PostgreSQL](installing_postgres12.md)
 
 8. [Creating GitHub and Bitbucket SSH keys](creating_git_ssh_key.md)
+
+9. [Compiling and Installing Nginx from source](compiling_and_installing_nginx_from_source.md)
