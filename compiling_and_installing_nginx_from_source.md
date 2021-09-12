@@ -106,37 +106,37 @@
 
 By default `nginx.conf` file contains a lot of information and comments. Most of them are not needed as we are going to create dedicated direcotries to keep vhost files in the next step. Keep the `nginx.conf` file contents like below.
 
-       user  www-data;         ## default is nobody
-       worker_processes  1;
+    user  www-data;         ## default is nobody
+    worker_processes  1;
 
-       events {
-               worker_connections  1024;
-       }
+    events {
+        worker_connections  1024;
+    }
 
-       http {
-               # avoid showing Nginx server version in error pages like 403, 404, or 500 etc
-               server_tokens off;
+    http {
+        # avoid showing Nginx server version in error pages like 403, 404, or 500 etc
+        server_tokens off;
 
-	       include       mime.types;
-               default_type  application/octet-stream;
+        include       mime.types;
+        default_type  application/octet-stream;
 
-               #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
-               #                  '$status $body_bytes_sent "$http_referer" '
-               #                  '"$http_user_agent" "$http_x_forwarded_for"';
+        #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+        #                  '$status $body_bytes_sent "$http_referer" '
+        #                  '"$http_user_agent" "$http_x_forwarded_for"';
 
-               #access_log  logs/access.log  main;
+        #access_log  logs/access.log  main;
 
-               sendfile    on;
-               #tcp_nopush on;
+        sendfile    on;
+        #tcp_nopush on;
 
-               keepalive_timeout  65;
+        keepalive_timeout  65;
 
-               #gzip  on;
+        #gzip  on;
 
-               server {
-                       listen  80;
-               }
-       }
+        server {
+                listen  80;
+        }
+    }
 
 ### Configuring sites
 
