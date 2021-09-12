@@ -58,6 +58,8 @@
         make 
         sudo make install
 
+   >Note: The `--user` argument creates a non-system user with nologin and no home directory. If you don't pass `--group` argument, it'll create a group with the same name as in `--user`.
+
 2. Start service and test if service is started
 
         sudo /etc/nginx/nginx           ## this path might vary depending upon how we installed
@@ -96,9 +98,45 @@
         sudo start nginx.service
         sudo status nginx.service
 
-    Note: Before enabling and starting service, make sure there's no other service is occupied port `80`. Kill any service if it's already occupied.
+    >**Note:** Before enabling and starting service, make sure there's no other service is occupied port `80`. Kill any service if it's already occupied.
 
         fuser -k 80/tcp         ## kill port 80
+
+### Update Nginx configuration file
+
+By default `nginx.conf` file contains a lot of information and comments. Most of them are not needed as we are going to create dedicated direcotries to keep vhost files in the next step. Keep the `nginx.conf` file contents like below.
+
+        user  www-data;         ## default is nobody
+        worker_processes  1;
+
+        events {
+                worker_connections  1024;
+        }
+
+        http {
+                # avoid showing Nginx server version in error pages like 403, 404, or 500 etc
+                server_tokens off;
+
+                include       mime.types;
+                default_type  application/octet-stream;
+
+                #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                #                  '$status $body_bytes_sent "$http_referer" '
+                #                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+                #access_log  logs/access.log  main;
+
+                sendfile    on;
+                #tcp_nopush on;
+
+                keepalive_timeout  65;
+
+                #gzip  on;
+
+                server {
+                        listen  80;
+                }
+        }
 
 ### Configuring sites
 
@@ -112,7 +150,11 @@
 
 2. Link `site-enabled` directory in `nginx.conf` file. To do that, edit `etc/nginx/nginx.conf` and add the below line in `http` section.
 
-        include /etc/nginx/sites-enabled/*;
+        http {
+                ...
+                include /etc/nginx/sites-enabled/*;
+                ...
+        }
 
 3. Create `default` virtual host file or if you have a domain name, create a file with the same name in `/etc/nginx/sites-available/default`. And put the below contents.
 
