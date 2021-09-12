@@ -12,7 +12,7 @@
 
 3. Install [PCRE](http://pcre.org/)
 
-    Download PCRE source code from official [repo](https://ftp.pcre.org/pub/pcre/)
+    Download PCRE source code from the official [repo](https://ftp.pcre.org/pub/pcre/)
 
         wget https://ftp.pcre.org/pub/pcre/pcre-8.44.tar.gz
         tar -zxf pcre-8.44.tar.gz     ## extract
@@ -32,7 +32,7 @@
 
 5. Install [OpenSSL](https://www.openssl.org/)
 
-    Download source code from official [website](https://www.openssl.org/source/)
+    Download source code from the official [website](https://www.openssl.org/source/)
 
         wget https://www.openssl.org/source/openssl-1.1.1l.tar.gz
         tar -zxf openssl-1.1.1l.tar.gz
@@ -46,7 +46,7 @@
 
 ### Download and install Nginx
 
-1. Download latest (stable) version of Nginx source code from officical [website](http://nginx.org/en/download.html)
+1. Download latest (stable) version of Nginx source code from official [website](http://nginx.org/en/download.html)
 
         wget http://nginx.org/download/nginx-1.20.1.tar.gz
         tar -zxf nginx-1.20.1.tar.gz
@@ -69,7 +69,7 @@
         curl -I http://localhost
 
 
-3. If everything is works fine, add Nginx to `systemd` so that it can start automatically when server is restarted.
+3. If everything is working fine, add Nginx to `systemd` so that it can start automatically when the server is restarted.
 
    Create a file `/lib/systemd/system/nginx.service` and put below contents in it.
 
@@ -102,7 +102,7 @@
 
 ### Configuring sites
 
-1. When we install Nginx from source code, we don't get `sites-available` and `sites-enabled` directories as we get if installed through Ubuntu/Debian (`apt`) package manager. Instead we get only one `nginx.conf` file which will be located in `/etc/nginx/` directory. 
+1. When we install Nginx from source code, we don't get `sites-available` and `sites-enabled` directories as we get if installed through Ubuntu/Debian (`apt`) package manager. Instead, we get only one `nginx.conf` file which will be located in the `/etc/nginx/` directory. 
 
    We need to create and configure these directories manually.
 
@@ -110,30 +110,30 @@
 
         sudo mkdir -p /etc/nginx/sites-enabled /etc/nginx/sites-available
 
-2. Link `site-enabled` directory in `nginx.conf` file. To do that, edit `etc/nginx/nginx.conf` and add below line in `http` section.
+2. Link `site-enabled` directory in `nginx.conf` file. To do that, edit `etc/nginx/nginx.conf` and add the below line in `http` section.
 
         include /etc/nginx/sites-enabled/*;
 
-3. Create `default` virtual host file or if you have domain name, create file with the same name in `/etc/nginx/sites-available/default`. And put the below contents.
+3. Create `default` virtual host file or if you have a domain name, create a file with the same name in `/etc/nginx/sites-available/default`. And put the below contents.
 
         server {
 
-	        server_name  localhost;   ## add domain here
+                server_name  localhost;   ## add domain here
 
-	        root   /var/www/html;
-	        index  index.html index.htm;
+                root   /var/www/html;
+                index  index.html index.htm;
 		    
-	        location / {
-                     try_files $uri $uri/ =404; 
-	        }
+                location / {
+                        try_files $uri $uri/ =404; 
+                }
 
-	        #error_page  404 /404.html;
+                #error_page  404 /404.html;
 
-	        # redirect server error pages to the static page /50x.html
-		    error_page   500 502 503 504  /50x.html;
-		    location = /50x.html {
-		        root   html;
-		    }
+                # redirect server error pages to the static page /50x.html
+                error_page   500 502 503 504  /50x.html;
+                location = /50x.html {
+                        root   /var/www/html;
+                }
         }
 
     Save and exit
@@ -146,11 +146,11 @@
 
         sudo ../nginx -t
 
-   If above command returns no error, then file syntax is proper and we can proceed.Restart the Nginx server.
+   If the above command returns no error, then file syntax is proper and we can proceed. Restart the Nginx server.
 
         sudo systemctl restart nginx.service
 
-6. Check if server is responding to the request.
+6. Check if the server is responding to the request.
 
         curl -I http://localhost
 
