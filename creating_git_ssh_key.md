@@ -61,3 +61,9 @@
 8. While cloning the new repo, use the following URL pattern
 
 		git@user-github:some_user_name/project_repo.git
+
+
+
+>**Note**: If you receive an error like "Host key verification failed", run below command to get rid off.
+
+	ssh-keygn -f "/home/<user_name>/.ssh/known_hosts" -R "[host_address_here]"
