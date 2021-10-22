@@ -21,3 +21,5 @@ Here's the procedure to set up a Ubuntu server and install required software lik
 8. [Creating GitHub and Bitbucket SSH keys](creating_git_ssh_key.md)
 
 9. [Compiling and Installing Nginx from source](compiling_and_installing_nginx_from_source.md)
+
+10. [Copying SSH key to remote server](copying_ssh_to_server.md)
