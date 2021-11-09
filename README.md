@@ -23,3 +23,5 @@ Here's the procedure to set up a Ubuntu server and install required software lik
 9. [Compiling and Installing Nginx from source](compiling_and_installing_nginx_from_source.md)
 
 10. [Copying SSH key to remote server](copying_ssh_to_server.md)
+
+11. [Installing MariaDB 5.5.68 using tarball](installing_mariadb_5.5.68.md)
