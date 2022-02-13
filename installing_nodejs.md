@@ -21,7 +21,7 @@
 
 6. Check NodeJS version
 
-        nodejs --version
+        node --version
 
 5. Check NPM version
 
