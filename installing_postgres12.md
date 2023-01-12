@@ -101,7 +101,7 @@
 
         ## exclude one or more table data and maintain structure as it is
         
-        pg_dump -U <user_name> <database_name> > backupfile.sql --no-owner --exclude-table=<table_name>
+        pg_dump -U <user_name> <database_name> > backupfile.sql --no-owner --exclude-table-data=<table_name>
 
 10. Restoring the database.
 
