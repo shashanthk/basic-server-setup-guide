@@ -1,5 +1,3 @@
-Here's the procedure to set up a Ubuntu server and install required software like Apache2, MySQL, etc.
-
 >**Note**: The steps I mentioned here are tested with the Ubuntu server on **Virtual Box**. So, be careful and verify it if you're following these procedures on live servers.
 
 #### Contents
@@ -25,3 +23,5 @@ Here's the procedure to set up a Ubuntu server and install required software lik
 10. [Copying SSH key to remote server](copying_ssh_to_server.md)
 
 11. [Installing MariaDB 5.5.68 using tarball](installing_mariadb_5.5.68.md)
+
+12. [Creating Tomcat custom error page](creating_tomcat_custom_error_page.md)
