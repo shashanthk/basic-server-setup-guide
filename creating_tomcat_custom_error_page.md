@@ -126,3 +126,48 @@
     sudo systemctl restart tomcat.service
     ```
     
+8. At last we also need to hide the Tomcat's default page which will give access to the host manager.
+
+    ```
+    cd <tomcat_installation_path>/webapps/ROOT
+    ```
+
+    Keep a copy of `index.jsp` and `favicon.ico` files. If you don't want, you can delete them.
+
+    ``` 
+    cp index.jsp index.jsp.bak
+    
+    cp favicon.ico favicon.ico.bak
+
+    sudo nano <tomcat_installation_path>/webapps/ROOT/index.jsp
+    ```
+
+    Add below HTML content to it
+
+    ```
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Root</title>
+    </head>
+
+    <body>
+        <h4>
+            Root
+        </h4>
+    </body>
+
+    </html>
+    ```
+
+9. Once you change these contents, you will not be able to see the Tomcat's default page. If you want to login to manager, you have to manually enter the URL
+
+    ```
+    https://tomcaturl.com/manager/html
+    ```
+
+    The above URL propts you to enter the login credentials.
