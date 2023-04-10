@@ -3,6 +3,7 @@
 1. Create below error pages
 
     ```
+    400.jsp
     401.jsp
     403.jsp
     404.jsp
@@ -119,6 +120,8 @@
     ```
 
     Save and exit from editor.
+
+    Note: Same procedure needs to be followed for `host-manager` web app.
 
 7. Restart the Tomcat service
 
