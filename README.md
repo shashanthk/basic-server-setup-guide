@@ -26,4 +26,4 @@
 
 12. [Creating Tomcat custom error page](creating_tomcat_custom_error_page.md)
 
-12. [## Creating Nginx custom error page](creating_nginx_custtom_error_page.md)
+12. [Creating Nginx custom error page](creating_nginx_custtom_error_page.md)
