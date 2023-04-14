@@ -25,3 +25,5 @@
 11. [Installing MariaDB 5.5.68 using tarball](installing_mariadb_5.5.68.md)
 
 12. [Creating Tomcat custom error page](creating_tomcat_custom_error_page.md)
+
+12. [## Creating Nginx custom error page](creating_nginx_custtom_error_page.md)
