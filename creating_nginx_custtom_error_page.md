@@ -18,7 +18,6 @@
     </head>
         <body>
             <h4><!--# echo var="status" default="" --> <!--# echo var="status_text" default="Something went wrong" --></h4>
-        <!--# endif -->
         </body>
     </html>
     ```
