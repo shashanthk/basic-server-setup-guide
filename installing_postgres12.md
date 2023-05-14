@@ -45,7 +45,7 @@
 
         \password <user_name>
 
-   **Note:** To login with `ident` based authentication, we need to create a new user which matches with exact name as in Postgres database.
+   **Note:** To login with `ident` based authentication, we need to create a new user which matches with exact name as in Postgres database. Refer to the official [doc](https://www.postgresql.org/docs/12/auth-methods.html)
 
         sudo adduser <user_name>
 
@@ -103,8 +103,32 @@
         
         pg_dump -U <user_name> <database_name> > backupfile.sql --no-owner --exclude-table-data=<table_name>
 
+
+    Possible additional parameters
+
+    `--table` Take one table backup with structure and data.
+
+    `--data-only` Take only data, not structure. Can be used with `--table` parameter.
+
+    `--exclude-table` Excludeds both table structure and table data
+
+   `--no-privileges` or `--no-acl` Prevent dumping of access privileges (grant/revoke commands).
+
+
 10. Restoring the database.
 
         psql -d <database_name> -f backupfile.sql -U <user_name> --set ON_ERROR_STOP=on
 
     Since we are taking plain text backup, Postgres will ask us to restore it with `psql` command. Do not try it with `pg_restore` command.
+
+11. Table backup
+
+        ## table with structure and data
+        pg_dump -U <user_name> <database_name> --table table_name > table_backup_file.sql --no-owner
+
+        ## only table data
+        pg_dump -U <user_name> <database_name> --data-only --table table_name > table_backup_file.sql --no-owner
+
+11. Restoring the table or table data
+
+        psql -d <database_name> -f table_backup_file.sql -U <user_name> --set ON_ERROR_STOP=on
