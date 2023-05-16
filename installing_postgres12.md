@@ -124,9 +124,11 @@
 11. Table backup
 
         ## table with structure and data
+        
         pg_dump -U <user_name> <database_name> --table table_name > table_backup_file.sql --no-owner
 
         ## only table data
+
         pg_dump -U <user_name> <database_name> --data-only --table table_name > table_backup_file.sql --no-owner
 
 11. Restoring the table or table data
