@@ -85,6 +85,8 @@
 
         ALTER DEFAULT PRIVILEGES FOR USER <user_name> IN SCHEMA <schema_name> GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO <user_name>
 
+   For more refer to the official [doc](https://www.postgresql.org/docs/current/sql-grant.html)
+
 9. Taking backups
 
         ## backup with tables and records
