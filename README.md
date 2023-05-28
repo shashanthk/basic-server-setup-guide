@@ -26,4 +26,6 @@
 
 12. [Creating Tomcat custom error page](creating_tomcat_custom_error_page.md)
 
-12. [Creating Nginx custom error page](creating_nginx_custtom_error_page.md)
+13. [Creating Nginx custom error page](creating_nginx_custtom_error_page.md)
+
+14. [Installing and setting up Tomcat 9](installing_tomcat9.md)
