@@ -95,7 +95,7 @@
 
         ## backup with drop table, sequence and create commands
 
-        pg_dump -U <user_name> <database_name> > backupfile.sql --no-owner --clean
+        pg_dump -U <user_name> <database_name> > backupfile.sql --no-owner --clean --if-exists
 
         ## backup with only structure and sequence reset
 
