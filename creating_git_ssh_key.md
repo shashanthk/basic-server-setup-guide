@@ -53,7 +53,7 @@
 	Host user-github
         HostName ssh.github.com
         User git
-		Port 443
+        Port 443
         IdentityFile ~/.ssh/id_file_name_for_github
 
 5. Copy the `id_file_name.pub` file content and paste it to your Github account.
