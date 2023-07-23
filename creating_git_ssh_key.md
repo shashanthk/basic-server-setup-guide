@@ -21,7 +21,7 @@
 		id_file_name
 		id_file_name.pub
 
-	`-C` adds a comment into the public key generated. Which is your email ID in this case.
+	`-C` adds a comment into the public key generated. Which is your email ID in this case. This is completely optional.
 
 
 3. Create a `config` file inside the `.ssh` directory and tell the Git host address, git user, and SSH key to be used while accessing the Git services.
@@ -46,6 +46,16 @@
 
 	Save and exit from the editor.
 
+>**Note**: In some of the ISPs, the above configuration will not work. You receive an error message like "ssh: connect to host user-github port 22: Connection refused". If you face such error, try with the below config
+
+		# Github configuration
+
+		Host user-github
+        	HostName ssh.github.com
+        	User git
+			Port 443
+        	IdentityFile ~/.ssh/id_file_name_for_github
+
 5. Copy the `id_file_name.pub` file content and paste it to your Github account.
 
 	For Github, follow the link https://github.com/settings/keys
@@ -58,12 +68,12 @@
 
 7. If you don't get any error from the above command, the authentication worked. Now, you are good to use SSH tunnel to git operation.
 
-8. While cloning the new repo, use the following URL pattern
+8. While cloning the new repo, use command linke below
 
-		git@user-github:some_user_name/project_repo.git
+		git clone git@user-github:some_user_name/project_repo.git
 
-
+>Notice the `git@user-github:` before repo URL
 
 >**Note**: If you receive an error like "Host key verification failed", run below command to get rid off.
 
-	ssh-keygen -f "/home/<user_name>/.ssh/known_hosts" -R "[host_address_here]"
+	ssh-keygen -f "~/.ssh/known_hosts" -R "[host_address_here]"
