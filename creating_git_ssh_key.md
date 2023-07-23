@@ -48,13 +48,13 @@
 
 >**Note**: In some of the ISPs, the above configuration will not work. You receive an error message like "ssh: connect to host user-github port 22: Connection refused". If you face such error, try with the below config
 
-		# Github configuration
+	# Github configuration
 
-		Host user-github
-        	HostName ssh.github.com
-        	User git
-			Port 443
-        	IdentityFile ~/.ssh/id_file_name_for_github
+	Host user-github
+        HostName ssh.github.com
+        User git
+		Port 443
+        IdentityFile ~/.ssh/id_file_name_for_github
 
 5. Copy the `id_file_name.pub` file content and paste it to your Github account.
 
