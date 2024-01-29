@@ -71,7 +71,7 @@
 
             location / {
 
-                ## appply rate limiting by mentioning the same name as mentioned above `ip_rate_limit`
+                ## appply rate limiting by mentioning the same name as mentioned above "ip_rate_limit"
                 limit_req zone=ip_rate_limit;
 
                 index index.html;
@@ -89,3 +89,7 @@
         ## or
 
         sudo service nginx restart
+
+References:
+
+1. [How to rate-limit in nginx, but including/excluding certain IP addresses?](https://serverfault.com/q/177461)
