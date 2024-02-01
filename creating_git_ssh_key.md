@@ -8,7 +8,7 @@
 
 		C:\Users\<user_name>\.ssh
 
-	If you're on Mac or Linux, it would open the `.ssh` directory in the user's `home` path.
+	If you're on Mac or Linux, it would open the `.ssh` directory in the current user's `home` path.
 	
 		
 2. Generate SSH key by issuing the following command.
@@ -26,9 +26,15 @@
 
 3. Create a `config` file inside the `.ssh` directory and tell the Git host address, git user, and SSH key to be used while accessing the Git services.
 
-		touch config
+		touch ~/.ssh/config
+
+	If you are on Windows, you can use `notepad ~/.ssh/config` to open the editor directly.
 
 4. Open the `config` file in your favorite text editor and add the following lines.
+
+   On Windows `notepad ~/.ssh/config`
+
+   On Linux or Mac `nano ~/.ssh/config`
 
 		# Github configuration
 
