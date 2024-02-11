@@ -1,85 +1,83 @@
 ## Creating SSH keys for GitHub and Bitbucket
 
-1. Open terminal change directory to `.ssh`
+1. Open the terminal and change the directory to `.ssh`.
 
 		cd ~/.ssh
 
-	If you're on Windows, open Git bash and type the above command would open the path
+	If the directory doesn't exist, create it:
 
-		C:\Users\<user_name>\.ssh
+		mkdir -p ~/.ssh
 
-	If you're on Mac or Linux, it would open the `.ssh` directory in the current user's `home` path.
+    If you're on Windows, open [Git Bash](https://git-scm.com/) and type the above command to navigate to the path:
+
+	    C:\Users\<user_name>\.ssh
+
+    If you're on Mac or Linux, it will open the `.ssh` directory in the current user's `home` path.
+
+2. Generate an SSH key by issuing the following command:
+
+	    ssh-keygen -t ed25519 -f id_file_name
+
+    Here, the `-f` parameter creates two files with the name you mentioned: one is the private key and the other is the public key.
+
+	    id_file_name
+    	id_file_name.pub
+
+	Please change the file name according to the requirement.
+
+3. Create a `config` file inside the `.ssh` directory and specify the Git host address, Git user, and SSH key to be used while accessing Git services:
+
+	    touch ~/.ssh/config
+
+4. Open the `config` file in your favorite text editor and add the following lines:
+
+    - On Windows: `notepad ~/.ssh/config`
+    - On Linux or Mac: `nano ~/.ssh/config` or `vim ~/.ssh/config`
+
+    		# GitHub configuration
+
+    		Host user-github
+        		HostName github.com
+        		User git
+        		IdentityFile ~/.ssh/id_file_name_for_github
+
+    		# Bitbucket configuration
+
+    		Host user-bitbucket
+       			HostName bitbucket.org
+        		User git
+	        	IdentityFile ~/.ssh/id_file_name_for_bitbucket
+
+	Please change the `Host` value `user-github` according to the requirement. 
 	
-		
-2. Generate SSH key by issuing the following command.
+    Save and exit from the editor.
 
-		ssh-keygen -t ed25519 -C "yourgit@email.com" -f id_file_name
+> **Note**: In some ISPs, the above configuration will not work, and you may receive an error message like "ssh: connect to host user-github port 22: Connection refused." If you face such an error, try the alternative configuration provided below:
 
-		
-	Here, the `-f` paramter creates 2 files with the name you mentioned. 1 is the private key and another one is the public key.
-
-		id_file_name
-		id_file_name.pub
-
-	`-C` adds a comment into the public key generated. Which is your email ID in this case. This is completely optional.
-
-
-3. Create a `config` file inside the `.ssh` directory and tell the Git host address, git user, and SSH key to be used while accessing the Git services.
-
-		touch ~/.ssh/config
-
-	If you are on Windows, you can use `notepad ~/.ssh/config` to open the editor directly.
-
-4. Open the `config` file in your favorite text editor and add the following lines.
-
-   On Windows `notepad ~/.ssh/config`
-
-   On Linux or Mac `nano ~/.ssh/config`
-
-		# Github configuration
-
-		Host user-github
-        	HostName github.com
-        	User git
-        	IdentityFile ~/.ssh/id_file_name_for_github
-
-		# Bitbucket configuration
-
-		Host user-bitbucket
-        	HostName bitbucket.org
-        	User git
-        	IdentityFile ~/.ssh/id_file_name_for_bitbucket
-
-	Save and exit from the editor.
-
->**Note**: In some of the ISPs, the above configuration will not work. You receive an error message like "ssh: connect to host user-github port 22: Connection refused". If you face such error, try with the below config
-
-	# Github configuration
-
+	# GitHub configuration
 	Host user-github
-        HostName ssh.github.com
-        User git
-        Port 443
-        IdentityFile ~/.ssh/id_file_name_for_github
+		HostName ssh.github.com
+		User git
+		Port 443
+		IdentityFile ~/.ssh/id_file_name_for_github
 
-5. Copy the `id_file_name.pub` file content and paste it to your Github account.
+5. Copy the content of the `id_file_name.pub` file and paste it into your GitHub account settings:
 
-	For Github, follow the link https://github.com/settings/keys
+    - For GitHub: [GitHub SSH Keys](https://github.com/settings/keys)
+    - For Bitbucket: [Bitbucket SSH Keys](https://bitbucket.org/account/settings/ssh-keys/)
 
-	Bitbucket,	https://bitbucket.org/account/settings/ssh-keys/
+6. Test the newly added SSH configuration:
 
-6. Test newly added SSH configuration.
+    	ssh -T git@user-github
 
-		ssh -T git@user-github
+7. If you don't get any errors from the above command, the authentication worked. Now, you are ready to use SSH tunnel for Git operations.
 
-7. If you don't get any error from the above command, the authentication worked. Now, you are good to use SSH tunnel to git operation.
+8. While cloning a new repository, use the following command:
 
-8. While cloning the new repo, use command linke below
+    	git clone git@user-github:some_user_name/project_repo.git
 
-		git clone git@user-github:some_user_name/project_repo.git
+    Notice the `git@user-github:` before the repository URL.
 
->Notice the `git@user-github:` before repo URL
-
->**Note**: If you receive an error like "Host key verification failed", run below command to get rid off.
+> **Note**: If you receive an error like "Host key verification failed," run the following command to resolve it:
 
 	ssh-keygen -f "~/.ssh/known_hosts" -R "[host_address_here]"
