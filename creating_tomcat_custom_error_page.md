@@ -4,9 +4,11 @@
 
 1. Create error HTML pages for all standard error codes either manually or using an automated script. Use filenames like:
 
+    ```
     400.html
     401.html
     ... so on
+    ```
 
 Alternatively, use the shell script from the following GitHub Gist to generate these files automatically:
 
@@ -18,9 +20,9 @@ Download the script to your local environment and execute
 
 It will generate files for you.
 
-2. Place the generated error pages in a common location accessible by Tomcat, e.g., /var/www/tomcat-error. Make sure Tomcat has read access to this location:
+2. Place the generated error pages in a common location accessible by Tomcat, e.g., `/var/www/tomcat-error`. Make sure Tomcat has read access to this location:
 
-    /var/www/tomcat-error
+        /var/www/tomcat-error
 
 And grant permissions
 
@@ -30,11 +32,11 @@ And grant permissions
 
     ```
     <Valve className="org.apache.catalina.valves.ErrorReportValve"
-			errorCode.400="/var/www/tomcat-error/400.html"
-            errorCode.401="/var/www/tomcat-error/401.html"
-            showReport="false"
-            showServerInfo="false" 
-       />
+	    errorCode.400="/var/www/tomcat-error/400.html"
+        errorCode.401="/var/www/tomcat-error/401.html"
+        showReport="false"
+        showServerInfo="false" 
+    />
     ```
 
 To automate this, use a shell script to generate the necessary XML content:
