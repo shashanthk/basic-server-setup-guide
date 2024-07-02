@@ -42,18 +42,18 @@ And grant permissions
 To automate this, use a shell script to generate the necessary XML content:
 
 ```sh
-    #!/bin/bash
+#!/bin/bash
 
-    echo '<Valve className="org.apache.catalina.valves.ErrorReportValve"'
+echo '<Valve className="org.apache.catalina.valves.ErrorReportValve"'
 
-    error_codes=(400 401 402 403 404 405 406 407 408 409 410 411 412 413 414 415 416 417 418 421 422 423 424 425 426 428 429 431 451 500 501 502 503 504 505 506 507 508 510 511)
+error_codes=(400 401 402 403 404 405 406 407 408 409 410 411 412 413 414 415 416 417 418 421 422 423 424 425 426 428 429 431 451 500 501 502 503 504 505 506 507 508 510 511)
 
-    for code in "${error_codes[@]}"; do
-        echo "       errorCode.${code}=\"/var/www/tomcat-error/${code}.html\""
-    done
+for code in "${error_codes[@]}"; do
+    echo "       errorCode.${code}=\"/var/www/tomcat-error/${code}.html\""
+done
 
-    echo '       showReport="false"'
-    echo '       showServerInfo="false" />'
+echo '       showReport="false"'
+echo '       showServerInfo="false" />'
 ```
 
 Copy the generated content into the `server.xml` file between the `<Host></Host>` tags.
