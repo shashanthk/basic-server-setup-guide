@@ -1,5 +1,75 @@
 ## Creating Tomcat custom error page
 
+## Global handling
+
+1. Create error HTML pages for all standard error codes either manually or using an automated script. Use filenames like:
+
+    ```
+    400.html
+    401.html
+    ... so on
+    ```
+
+Alternatively, use the shell script from the following GitHub Gist to generate these files automatically:
+
+    https://gist.githubusercontent.com/shashanthk/d79ae47e3eb3ff9e38aaffce308acc3e/raw/4d0722f4c86fa91fc90c1f063066cfdbaa9c6866/generate_error_files.sh
+
+Download the script to your local environment and execute
+
+    ./generate_error_files.sh
+
+It will generate files for you.
+
+2. Place the generated error pages in a common location accessible by Tomcat, e.g., `/var/www/tomcat-error`. Make sure Tomcat has read access to this location:
+
+        /var/www/tomcat-error
+
+And grant permissions
+
+    sudo chown -R tomcat:tomcat /var/www/tomcat-error
+
+3. Add the [`Error Report Valve`](https://tomcat.apache.org/tomcat-10.0-doc/config/valve.html#Error_Report_Valve) to the `<tomcat_installation_path>/config/server.xml`
+
+    ```
+    <Valve className="org.apache.catalina.valves.ErrorReportValve"
+	    errorCode.400="/var/www/tomcat-error/400.html"
+        errorCode.401="/var/www/tomcat-error/401.html"
+        showReport="false"
+        showServerInfo="false" 
+    />
+    ```
+
+To automate this, use a shell script to generate the necessary XML content:
+
+    #!/bin/bash
+
+    echo '<Valve className="org.apache.catalina.valves.ErrorReportValve"'
+
+    error_codes=(400 401 402 403 404 405 406 407 408 409 410 411 412 413 414 415 416 417 418 421 422 423 424 425 426 428 429 431 451 500 501 502 503 504 505 506 507 508 510 511)
+
+    for code in "${error_codes[@]}"; do
+        echo "       errorCode.${code}=\"/var/www/tomcat-error/${code}.html\""
+    done
+
+    echo '       showReport="false"'
+    echo '       showServerInfo="false" />'
+
+Copy the generated content into the `server.xml` file between the `<Host></Host>` tags.
+
+The params `showReport="false"` and `showServerInfo="false"` will prevent the full error stack track and Tomcat version disclosure in case Tomcat fails to display the custom error pages.
+
+Save and exit from the text editor.
+
+4. Restart the Tomcat and try with below params to test the custom error pages.
+
+    ```
+    https://tomcat.domain/%%%            ## 400 bad request
+    https://tomcat.domain/sdfhjsdf      ## 404 page
+    https://tomcat.domain/manager/html      ## click on cancel button when prompted for credential and it should show 401 error
+    ```
+
+## The manual way (individual webapps)
+
 1. Create below error pages
 
     ```

@@ -29,3 +29,7 @@
 13. [Creating Nginx custom error page](creating_nginx_custtom_error_page.md)
 
 14. [Installing and setting up Tomcat 9](installing_tomcat9.md)
+
+15. [Simple request rate limiting in Nginx](simple_ratelimiting_in_nginx.md)
+
+16. [Deploying NextJS project on Linux server](deploying_nextjs_project.md)
