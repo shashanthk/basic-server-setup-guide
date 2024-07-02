@@ -12,11 +12,19 @@
 
 Alternatively, use the shell script from the following GitHub Gist to generate these files automatically:
 
-    https://gist.githubusercontent.com/shashanthk/d79ae47e3eb3ff9e38aaffce308acc3e/raw/4d0722f4c86fa91fc90c1f063066cfdbaa9c6866/generate_error_files.sh
+    https://gist.github.com/shashanthk/d79ae47e3eb3ff9e38aaffce308acc3e
 
 Download the script to your local environment and execute
 
-    ./generate_error_files.sh
+```sh
+cd /tmp
+
+wget https://gist.githubusercontent.com/shashanthk/d79ae47e3eb3ff9e38aaffce308acc3e/raw/4d0722f4c86fa91fc90c1f063066cfdbaa9c6866/generate_error_files.sh
+
+sudo chmod 775 generate_error_files.sh
+
+./generate_error_files.sh
+```
 
 It will generate files for you.
 
