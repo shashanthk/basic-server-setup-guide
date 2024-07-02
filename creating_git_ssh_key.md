@@ -44,21 +44,21 @@
     - On Windows: `notepad ~/.ssh/config`
     - On Linux or Mac: `nano ~/.ssh/config` or `vim ~/.ssh/config`
 
-		```ini
-   		# GitHub configuration
+	```ini
+   	# GitHub configuration
 
-   		Host user-github
-       		HostName github.com
-       		User git
-       		IdentityFile ~/.ssh/id_file_name_for_github
+   	Host user-github
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_file_name_for_github
 
-   		# Bitbucket configuration
+   	# Bitbucket configuration
 
-		Host user-bitbucket
-    		HostName bitbucket.org
-        	User git
-	        IdentityFile ~/.ssh/id_file_name_for_bitbucket
-		```
+	Host user-bitbucket
+    HostName bitbucket.org
+    User git
+	IdentityFile ~/.ssh/id_file_name_for_bitbucket
+	```
 
 	Please change the `Host` value `user-github` according to the requirement. 
 	
@@ -69,10 +69,10 @@
 ```ini
 # GitHub configuration
 Host user-github
-	HostName ssh.github.com
-	User git
-	Port 443
-	IdentityFile ~/.ssh/id_file_name_for_github
+HostName ssh.github.com
+User git
+Port 443
+IdentityFile ~/.ssh/id_file_name_for_github
 ```
 
 5. Copy the content of the `id_file_name.pub` file and paste it into your GitHub account settings:
