@@ -30,7 +30,7 @@ And grant permissions
 
 3. Add the [`Error Report Valve`](https://tomcat.apache.org/tomcat-10.0-doc/config/valve.html#Error_Report_Valve) to the `<tomcat_installation_path>/config/server.xml`
 
-    ```
+    ```xml
     <Valve className="org.apache.catalina.valves.ErrorReportValve"
 	    errorCode.400="/var/www/tomcat-error/400.html"
         errorCode.401="/var/www/tomcat-error/401.html"
@@ -41,6 +41,7 @@ And grant permissions
 
 To automate this, use a shell script to generate the necessary XML content:
 
+```sh
     #!/bin/bash
 
     echo '<Valve className="org.apache.catalina.valves.ErrorReportValve"'
@@ -53,6 +54,7 @@ To automate this, use a shell script to generate the necessary XML content:
 
     echo '       showReport="false"'
     echo '       showServerInfo="false" />'
+```
 
 Copy the generated content into the `server.xml` file between the `<Host></Host>` tags.
 
@@ -62,7 +64,7 @@ Save and exit from the text editor.
 
 4. Restart the Tomcat and try with below params to test the custom error pages.
 
-    ```
+    ```sh
     https://tomcat.domain/%%%            ## 400 bad request
     https://tomcat.domain/sdfhjsdf      ## 404 page
     https://tomcat.domain/manager/html      ## click on cancel button when prompted for credential and it should show 401 error
@@ -84,7 +86,7 @@ Save and exit from the text editor.
 
     Open the the file in any text editor and add the content
 
-    ```
+    ```html
     <!DOCTYPE html>
     <html lang="en">
 
@@ -110,7 +112,7 @@ Save and exit from the text editor.
 
     Create a directory inside `<tomcat_installation_path>/webapps/ROOT/WEB-INF` path
 
-    ```
+    ```sh
     cd <tomcat_installation_path>/webapps/ROOT/WEB-INF
     
     sudo mkdir jsp
@@ -118,19 +120,19 @@ Save and exit from the text editor.
 
     After creating the directory, place all the above files inside it and update the permission
 
-    ```
+    ```sh
     sudo chown -R tomcat:tomcat jsp
     ```
 
 3. Now, we need to configure these files as default error page
 
-    ```
+    ```sh
     sudo nano <tomcat_installation_path>/webapps/ROOT/WEB-INF/web.xml
     ```
 
     Add below lines inside `<web-app>...</web-app>`
 
-    ```
+    ```xml
     <error-page>
         <error-code>404</error-code>
         <location>/WEB-INF/jsp/404.jsp</location>
@@ -141,7 +143,7 @@ Save and exit from the text editor.
 
 4. Restart the Tomcat service to check the result
 
-    ```
+    ```sh
     sudo systemctl restart tomcat.service
     ```
 
@@ -163,7 +165,7 @@ Save and exit from the text editor.
 
     Please note that the manager UI has `jsp` directory and error pages in it by default. Instead of altering existing files, it's recommended to keep a backup of default files.
 
-    ```
+    ```sh
     cd <tomcat_installation_path>/webapps/manager/WEB-INF
 
     sudo cp jsp jsp.bak
@@ -179,13 +181,13 @@ Save and exit from the text editor.
 
     Update file permission
 
-    ```
+    ```sh
     sudo chown -R tomcat:tomcat <tomcat_installation_path>/webapps/manager/WEB-INF/jsp
     ```
 
     Update `web.xml` file to use custom error pages and update the content inside `<web-app>...</web-app>` block.
 
-    ```
+    ```sh
     sudo nano <tomcat_installation_path>/webapps/manager/WEB-INF/web.xml
     ```
 
@@ -195,19 +197,19 @@ Save and exit from the text editor.
 
 7. Restart the Tomcat service
 
-    ```
+    ```sh
     sudo systemctl restart tomcat.service
     ```
     
 8. At last we also need to hide the Tomcat's default page which will give access to the host manager.
 
-    ```
+    ```sh
     cd <tomcat_installation_path>/webapps/ROOT
     ```
 
     Keep a copy of `index.jsp` and `favicon.ico` files. If you don't want, you can delete them.
 
-    ``` 
+    ```sh 
     cp index.jsp index.jsp.bak
     
     cp favicon.ico favicon.ico.bak
@@ -217,7 +219,7 @@ Save and exit from the text editor.
 
     Add below HTML content to it
 
-    ```
+    ```html
     <!DOCTYPE html>
     <html lang="en">
 
