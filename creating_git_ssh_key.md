@@ -26,6 +26,12 @@
 	ssh-keygen -t ed25519 -f id_file_name
 	```
 
+	>**Note**: Some Git code hosting services, like Azure DevOps, support only RSA key pairs. The `ed25519` key is not supported yet. To generate an RSA key, run the command below:
+
+	```sh
+	ssh-keygen -t rsa -b 4096 -f id_file_name
+	```
+
     Here, the `-f` parameter creates two files with the name you mentioned: one is the private key and the other is the public key.
 
 	    id_file_name
@@ -58,6 +64,13 @@
     HostName bitbucket.org
     User git
 	IdentityFile ~/.ssh/id_file_name_for_bitbucket
+
+	# Azure DevOps configuration
+
+	Host user-azure
+    HostName ssh.dev.azure.com
+    User git
+	IdentityFile ~/.ssh/id_file_name_for_azure
 	```
 
 	Please change the `Host` value `user-github` according to the requirement. 
@@ -95,6 +108,12 @@ IdentityFile ~/.ssh/id_file_name_for_github
 	```
 
     Notice the `git@user-github:` before the repository URL.
+
+	>**Note**: For Azure DevOps, use the below notation
+
+	```sh
+	git clone user-azure:v3/some_org/project/repo_name
+	```
 
 > **Note**: If you receive an error like "Host key verification failed," run the following command to resolve it:
 
