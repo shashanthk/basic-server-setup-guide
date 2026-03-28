@@ -18,11 +18,11 @@
 
         sudo ufw status
 
-6. If you want to see the list of applications that can be added to the firewall list.
+5. If you want to see the list of applications that can be added to the firewall list.
 
         sudo ufw app list
 
-5. Deleting rule
+6. Deleting rule
 
     Check existing rules by rule number.
 
@@ -32,10 +32,10 @@
 
         sudo ufw delete <rule_number> 
 
-6. If something goes wrong or if you want to disable the firewall for testing purpose while deploying the web applications,
+7. If something goes wrong or if you want to disable the firewall for testing purposes while deploying web applications,
 
         sudo ufw disable
 
-7. For resetting the firewall settings
+8. For resetting the firewall settings
 
         sudo ufw reset

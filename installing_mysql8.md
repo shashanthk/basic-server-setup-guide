@@ -14,8 +14,8 @@
 
 4. The installer adds the latest version MySQL apt to the Ubuntu package repository. Now, we need to update the repositories in order to install the latest version of MySQL.
 
-		sudo update
-		sudo upgrade
+		sudo apt update
+		sudo apt upgrade
 
 5. It's time to install MySQL now
 	
