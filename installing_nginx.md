@@ -26,7 +26,7 @@
 4. To check the installation and if firewall settings are allowing the request to the server, enter the IP address of your server in any browser. If you see the default Nginx server welcome page, then the installation and configuration are working properly.
 
 
-### Secutiry related configs
+### Security related configs
 
 1. Disable the Nginx version being displayed on all the error pages.
 

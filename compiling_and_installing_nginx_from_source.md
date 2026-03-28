@@ -52,7 +52,7 @@
         tar -zxf nginx-1.20.1.tar.gz
         cd nginx-1.20.1
 
-        ## configure with paramters
+        ## configure with parameters
         ./configure --sbin-path=/etc/nginx/nginx --conf-path=/etc/nginx/nginx.conf --pid-path=/etc/nginx/nginx.pid --with-pcre=../pcre-8.44 --with-zlib=../zlib-1.2.11 --with-http_ssl_module --with-stream --with-mail=dynamic --http-log-path=/var/log/nginx/access_log.log --error-log-path=/var/log/nginx/error_log.log --user=www-data --group=www-data
 
         make 
@@ -95,8 +95,8 @@
 4. Enable and start `nginx.service` in `systemd`
 
         sudo systemctl enable nginx.service
-        sudo start nginx.service
-        sudo status nginx.service
+        sudo systemctl start nginx.service
+        sudo systemctl status nginx.service
 
     >**Note:** Before enabling and starting service, make sure there's no other service is occupied port `80`. Kill any service if it's already occupied.
 
@@ -104,7 +104,7 @@
 
 ### Update Nginx configuration file
 
-By default `nginx.conf` file contains a lot of information and comments. Most of them are not needed as we are going to create dedicated direcotries to keep vhost files in the next step. Keep the `nginx.conf` file contents like below.
+By default `nginx.conf` file contains a lot of information and comments. Most of them are not needed as we are going to create dedicated directories to keep vhost files in the next step. Keep the `nginx.conf` file contents like below.
 
     user  www-data;         ## default is nobody
     worker_processes  1;

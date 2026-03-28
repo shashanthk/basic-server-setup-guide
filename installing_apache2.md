@@ -4,8 +4,8 @@
 
 1. Update the software repositories first.
 	
-		sudo update
-		sudo upgrade
+		sudo apt update
+		sudo apt upgrade
 
 2. Install Apache2
 	
@@ -38,11 +38,11 @@
 
 7. Place/clone your code into user's home directory and adjust the database credentials if there any.
 
-8. Set webiste's root directory permssion to 755. Otherwise Apache server fails accces the files and load it in browser. (We get **403 Forbidden access** error).
+8. Set website's root directory permission to 755. Otherwise Apache server fails to access the files and load them in the browser. (We get **403 Forbidden access** error).
 
 		sudo chmod 755 /home/user_name/project_root_folder
 
-9. In order to point this path to Apache server, we need to edit some confirgurations files. We update Apache's virtual host files here. There's a defualt virtual host file, we copy it to make our own virtual host file.
+9. In order to point this path to Apache server, we need to edit some configuration files. We update Apache's virtual host files here. There's a default virtual host file, we copy it to make our own virtual host file.
 
 		sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/mysite.test.conf
 
@@ -97,3 +97,4 @@
 
 13. Restart the Apache2 to apply the changes.
 
+		sudo systemctl restart apache2

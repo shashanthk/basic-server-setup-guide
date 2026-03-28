@@ -1,6 +1,6 @@
 ## Setting up PostgreSQL 12 on Ubuntu
 
-1. Update the package repositiory
+1. Update the package repository
 
         sudo apt update
         sudo apt upgrade
@@ -77,7 +77,7 @@
 
         GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA <schema_name> TO <user_name>
 
-        ## granting all the pivileges in one shot
+        ## granting all the privileges in one shot
 
         GRANT ALL PRIVILEGES ON DATABASE <database_name> TO <user_name>
 

@@ -10,7 +10,7 @@
 
     You can change the version of NodeJS according to your requirement. Just change the first part and let `x` as it is. For example `15.x`
 
-3. Make `nodesetu.sh` as an executable script.
+3. Make `nodesetup.sh` an executable script and run it.
 
         sudo bash nodesetup.sh
 
@@ -19,10 +19,10 @@
         sudo apt install nodejs
         sudo apt install build-essential
 
-6. Check NodeJS version
+5. Check NodeJS version
 
         node --version
 
-5. Check NPM version
+6. Check NPM version
 
         npm --version
